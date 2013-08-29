@@ -1,0 +1,21 @@
+
+table{
+    border: 1px solid green;
+    background-color: rgb(232,232,170);
+    
+}
+
+#header {
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    font-family: sans-serif;
+    
+}
+
+#gameBoard
+{
+    width: 500px;
+    height: 400px;
+    margin-left: 400px;
+}
