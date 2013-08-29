@@ -3,6 +3,7 @@
     <head>
         <h1 id="header"><b>Brainvita</b></h1>
         <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
+        <script src="Assets/js/brainvita-game.js"></script>    
     </head>
     <body onload="startGame()">
         <div id="gameBoard">
@@ -11,32 +12,4 @@
         
     </body>
     
-    <script>
-        function startGame() {
-            var data = "<table cellpadding= 3 ; cellspacing = 1>";
-            for(var i=0;i<7;i++) {
-                data=data+"<tr>";
-                
-                for(var j=0;j<7;j++){
-                    data=data+"<td>";
-                        if (i<2 && j>=2 && j<=4) {
-                            data=data+"<img src='Assets/images/coin.png'/>";
-                        }
-                        if (i==3 && j==3) {
-                            data=data+"<img src='Assets/images/empty.png'/>";
-                        }
-                        else if(i>=2 && i<=4) {
-                            data=data+"<img src='Assets/images/coin.png'/>";
-                        }
-                        if (i>=5 && j>=2 && j<=4 ) {
-                            data=data+"<img src='Assets/images/coin.png'/>";
-                        }
-                    data=data+"</td>";
-                    }
-                    data=data+"</tr>";
-            }
-            data+="</table>";
-            document.getElementById("gameBoard").innerHTML = data;
-        }
-    </script>
 </html>
