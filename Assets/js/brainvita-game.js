@@ -1,5 +1,5 @@
 
-
+var selected_coin=0;
 var coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -23,11 +23,11 @@ function loadCoins() {
                 data=data+"<tr>";
                 
                 for(var j=0;j<7;j++){
-                    data=data+"<td>";
+                    data=data+"<td id='box'"+i+j+">";
                         var x = coinStatus[i][j];
             
                         if (x == 1) {
-                           data=data+"<a id= '"+i+j+"' href='#'><img src='Assets/images/coin.png' onclick= 'return coinClicked("+i+","+j+")'/> </a>";
+                           data=data+"<span><a id= '"+i+j+"' href='#'><img src='Assets/images/coin.png' onclick= 'return coinClicked("+i+","+j+")'/> </a></span>";
                         }
                         if (x == 0) {
                             data=data+"<a id= '"+i+j+"' href='#'><img src='Assets/images/empty.png' onclick= 'return coinClicked("+i+","+j+")'/> </a>";
@@ -44,6 +44,49 @@ function loadCoins() {
 }
 
 function coinClicked(x,y){
-    
+            if (selected_coin==0) {
+                        selected_coin=x+"."+y;
+                        return;
+            }
+            if (selected_coin!=0) {
+                        jumpCoin(x,y);
+            }
+            
+}
+
+function jumpCoin(x,y) {
+            
+            if (x == parseInt(selected_coin[0]) && y==parseInt(selected_coin[2]) + 2 && coinStatus[x][y] == 0 && coinStatus[x][y-1]==1) {
+                        coinStatus[x][y]=1;
+                        coinStatus[x][y-2]=0;
+                        coinStatus[x][y-1]=0;
+                        loadCoins();
+                        selected_coin=0;
+            }
+            if (x == parseInt(selected_coin[0]) && y==parseInt(selected_coin[2]) - 2 && coinStatus[x][y] == 0 && coinStatus[x][y+1]==1) {
+                        coinStatus[x][y]=1;
+                        coinStatus[x][y+2]=0;
+                        coinStatus[x][y+1]=0;
+                        loadCoins();
+                        selected_coin=0;
+            }
+            if (x == parseInt(selected_coin[0])+2 && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x-1][y]==1) {
+                        coinStatus[x][y]=1;
+                        coinStatus[x-2][y]=0;
+                        coinStatus[x-1][y]=0;
+                        loadCoins();
+                        selected_coin=0;
+            }
+            if (x == parseInt(selected_coin[0]-2) && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x+1][y]==1) {
+                        coinStatus[x][y]=1;
+                        coinStatus[x+2][y]=0;
+                        coinStatus[x+1][y]=0;
+                        loadCoins();
+                        selected_coin=0;
+            }
+            else{
+                        selected_coin=0;
+            }
+            
 }
         
