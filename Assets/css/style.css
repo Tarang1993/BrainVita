@@ -1,15 +1,16 @@
 
 table{
-    border: 1px solid green;
+    border: 2px solid green;
     background-color: rgb(232,232,170);
     
 }
 
-#header {
+#header{
     height: 50px;
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
     font-family: sans-serif;
+    color: green;
 }
 
 #gameBoard

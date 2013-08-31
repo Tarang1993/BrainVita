@@ -27,10 +27,10 @@ function loadCoins() {
                         var x = coinStatus[i][j];
             
                         if (x == 1) {
-                           data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/coin.png'  onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
+                           data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/coin.png' onmouseover='return highlightBox("+i+","+j+")' onmouseout='return deselectBox("+i+","+j+")'onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
                         }
                         if (x == 0) {
-                            data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/empty.png'  onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
+                            data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/empty.png' onmouseover='return highlightBox("+i+","+j+")' onmouseout='return deselectBox("+i+","+j+")' onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
                         }
                         
                     data=data+"</td>";
@@ -112,4 +112,23 @@ function jumpCoin(x,y,el) {
             }
             
 }
-        
+
+$("#header").mouseover(function() {
+            $("#header").css("text-shadow","0 0 10px green");     
+});
+
+$("#header").mouseout(function() {
+            $("#header").css("text-shadow","none");     
+});
+
+function highlightBox(x,y) {
+            var id = 'box'+x+y;
+            $('#'+id).css("background-color","#999900");
+}
+function deselectBox(x,y) {
+            var id = 'box'+x+y;
+            $('#'+id).css("background-color","rgb(232,232,170)");
+            
+}
+
+
