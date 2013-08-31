@@ -127,7 +127,9 @@ function highlightBox(x,y) {
 }
 function deselectBox(x,y) {
             var id = 'box'+x+y;
+            if(selected_coin!=x+"."+y){
             $('#'+id).css("background-color","rgb(232,232,170)");
+            }
             
 }
 
