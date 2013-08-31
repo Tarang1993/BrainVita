@@ -27,10 +27,10 @@ function loadCoins() {
                         var x = coinStatus[i][j];
             
                         if (x == 1) {
-                           data=data+"<span><a id= '"+i+j+"' href='#'><img src='Assets/images/coin.png' onclick= 'return coinClicked("+i+","+j+")'/> </a></span>";
+                           data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/coin.png' onmouseover='return highlightBox("+i+","+j+")' onmouseout='return deselectBox("+i+","+j+")'onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
                         }
                         if (x == 0) {
-                            data=data+"<a id= '"+i+j+"' href='#'><img src='Assets/images/empty.png' onclick= 'return coinClicked("+i+","+j+")'/> </a>";
+                            data=data+"<a id= '"+i+j+"' href='#'><img id='box"+i+j+"' src='Assets/images/empty.png' onmouseover='return highlightBox("+i+","+j+")' onmouseout='return deselectBox("+i+","+j+")' onclick= 'return coinClicked("+i+","+j+",this)'/> </a>";
                         }
                         
                     data=data+"</td>";
@@ -43,50 +43,92 @@ function loadCoins() {
         
 }
 
-function coinClicked(x,y){
+
+
+function coinClicked(x,y,el){
+            var id = $(el).attr("id");
             if (selected_coin==0) {
+                        
                         selected_coin=x+"."+y;
+                        $('#'+id).css("background-color","green");
                         return;
             }
             if (selected_coin!=0) {
-                        jumpCoin(x,y);
+                        var i = selected_coin[0];
+                        var j = selected_coin[2];
+                        var old_id = 'box'+i+j;
+                        $('#'+old_id).css("background-color","rgb(232,232,170)");
+                        jumpCoin(x,y,el);
             }
             
 }
 
-function jumpCoin(x,y) {
+function jumpCoin(x,y,el) {
             
             if (x == parseInt(selected_coin[0]) && y==parseInt(selected_coin[2]) + 2 && coinStatus[x][y] == 0 && coinStatus[x][y-1]==1) {
                         coinStatus[x][y]=1;
                         coinStatus[x][y-2]=0;
                         coinStatus[x][y-1]=0;
+                        var new_id = 'box'+x+y;
                         loadCoins();
+                        $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        return;
             }
             if (x == parseInt(selected_coin[0]) && y==parseInt(selected_coin[2]) - 2 && coinStatus[x][y] == 0 && coinStatus[x][y+1]==1) {
                         coinStatus[x][y]=1;
                         coinStatus[x][y+2]=0;
                         coinStatus[x][y+1]=0;
+                        var new_id = 'box'+x+y;
                         loadCoins();
+                        $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        return;
             }
             if (x == parseInt(selected_coin[0])+2 && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x-1][y]==1) {
                         coinStatus[x][y]=1;
                         coinStatus[x-2][y]=0;
                         coinStatus[x-1][y]=0;
+                        var new_id = 'box'+x+y;
                         loadCoins();
+                        $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        return;
             }
             if (x == parseInt(selected_coin[0]-2) && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x+1][y]==1) {
                         coinStatus[x][y]=1;
                         coinStatus[x+2][y]=0;
                         coinStatus[x+1][y]=0;
+                        var new_id = 'box'+x+y;
                         loadCoins();
+                        $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        return;
             }
             else{
                         selected_coin=0;
+                        coinClicked(x,y,el);
+                        return;
             }
             
 }
-        
+
+$("#header").mouseover(function() {
+            $("#header").css("text-shadow","0 0 10px green");     
+});
+
+$("#header").mouseout(function() {
+            $("#header").css("text-shadow","none");     
+});
+
+function highlightBox(x,y) {
+            var id = 'box'+x+y;
+            $('#'+id).css("background-color","#999900");
+}
+function deselectBox(x,y) {
+            var id = 'box'+x+y;
+            $('#'+id).css("background-color","rgb(232,232,170)");
+            
+}
+
+
