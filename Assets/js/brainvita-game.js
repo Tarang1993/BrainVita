@@ -43,16 +43,13 @@ function loadCoins() {
         
 }
 
-$(".box").click(function(e){
-   alert("hello");         
-            
-});
+
 
 function coinClicked(x,y){
             if (selected_coin==0) {
                         selected_coin=x+"."+y;
                         var a ="box"+x+y;
-                        alert(a);
+                        //alert(a);
                         $('#box"+x+y+"').css("border","1px solid #021a40");
                         return;
             }
