@@ -2,12 +2,47 @@
     <title> Brainvita Game</title>
     <head>
         <h1><center><b><a id="header" style="text-decoration:none" href="#">Brainvita</a></b></center></h1>
+       <link rel="stylesheet" type="text/css" href="Assets/css/bootstrap.css"> 
+        <link rel="stylesheet" type="text/css" href="Assets/css/bootstrap.min.css"> 
+        <link rel="stylesheet" type="text/css" href="Assets/css/bootstrap-responsive.css"> 
         <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="Assets/js/brainvita-game.js"></script>
         
     </head>
     <body onload="startGame()">
+        <div id="instruction">
+            <ul class="navbar">
+                <br><br><br><br>
+            <h2>Rules:</h2>
+        
+            
+        
+                <li class="active">
+                    Select a coin to jump it over another coin.
+                </li>
+                <br>
+                <li class="pagination-large">
+                    You can jump over only 1 coin either horizontally or vertically.
+                </li>
+                <br>
+                <li>
+                    You cannot jump a coind diagonally.
+                </li>
+                <br>
+                <li>
+                    The coin which is jumped over by another coin will be removed
+                </li>
+                <br>
+                <li>
+                    If 1 coin remains at the end, you have won the game! 
+                </li>
+        </ul>
+        </div>
+        <div id="reset">
+            <button id="reset_button" class="btn btn-large btn-success" onclick="return resetGame()">Reset</button>
+        </div>
+              
         <div id="gameBoard">
             
         </div>

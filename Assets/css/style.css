@@ -1,4 +1,22 @@
 
+h2{
+    margin: 10px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+  font-size: 31.5px;
+}
+
+li {
+  line-height: 20px;
+}
+button{
+cursor: pointer;
+  -webkit-appearance: button;
+}
+
 table{
     border: 2px solid green;
     background-color: rgb(232,232,170);
@@ -9,7 +27,7 @@ table{
     height: 50px;
     text-align: center;
     font-size: 50px;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: green;
 }
 
@@ -18,4 +36,18 @@ table{
     width: 500px;
     height: 400px;
     margin-left: 400px;
+    margin-top: 30px;
+}
+
+#reset{
+    margin-left: 600px;
+    margin-top: -40px;
+    
+}
+
+#instruction{
+    height:50px;
+    font-size: 18px;
+    width:350px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
