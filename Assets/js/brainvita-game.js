@@ -133,4 +133,19 @@ function deselectBox(x,y) {
             
 }
 
+function resetGame(){
+            
+            coinStatus = new Array(
+                           new Array(-1,-1,1,1,1,-1,-1),
+                           new Array(-1,-1,1,1,1,-1,-1),
+                           new Array(1,1,1,1,1,1,1),
+                           new Array(1,1,1,0,1,1,1),
+                           new Array(1,1,1,1,1,1,1),
+                           new Array(-1,-1,1,1,1,-1,-1),
+                           new Array(-1,-1,1,1,1,-1,-1)
+                          );
+            loadCoins();
+            
+            }
+
 
