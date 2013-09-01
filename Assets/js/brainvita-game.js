@@ -1,5 +1,7 @@
-
+var coinsLeft=32;
+var moves=0;
 var selected_coin=0;
+var status_message="";
 var coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -14,7 +16,10 @@ var coinStatus = new Array(
 
 function startGame() {
             loadCoins();
-            
+            var coins = "Coins Left: 32";
+            document.getElementById("coins_left").innerHTML = coins;
+            var move = "Moves: 0";
+            document.getElementById("moves").innerHTML = move;
 }
 
 function loadCoins() {
@@ -48,9 +53,13 @@ function loadCoins() {
 function coinClicked(x,y,el){
             var id = $(el).attr("id");
             if (selected_coin==0) {
-                        
                         selected_coin=x+"."+y;
                         $('#'+id).css("background-color","green");
+                        if (status_message!="Invalid move! Try again!") {
+                                    status_message="Selecting a coin.";
+                                    $("#status_message").css("color","green");
+                                    document.getElementById("status_message").innerHTML=status_message;
+                        }
                         return;
             }
             if (selected_coin!=0) {
@@ -73,6 +82,15 @@ function jumpCoin(x,y,el) {
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        coinsLeft--;
+                        moves++;
+                        var coin = "Coins Left: "+coinsLeft;
+                        var move = "Moves :"+moves;
+                        document.getElementById("coins_left").innerHTML= coin;
+                        document.getElementById("moves").innerHTML= move;
+                        status_message="Valid move! Coin removed.";
+                        $("status_message").css("color","green");
+                        document.getElementById("status_message").innerHTML=status_message;
                         return;
             }
             if (x == parseInt(selected_coin[0]) && y==parseInt(selected_coin[2]) - 2 && coinStatus[x][y] == 0 && coinStatus[x][y+1]==1) {
@@ -83,6 +101,15 @@ function jumpCoin(x,y,el) {
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        coinsLeft--;
+                        moves++;
+                        var coin = "Coins Left: "+coinsLeft;
+                        var move = "Moves :"+moves;
+                        document.getElementById("coins_left").innerHTML= coin;
+                        document.getElementById("moves").innerHTML= move;
+                        status_message="Valid move! Coin removed.";
+                        $("status_message").css("color","green");
+                        document.getElementById("status_message").innerHTML=status_message;
                         return;
             }
             if (x == parseInt(selected_coin[0])+2 && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x-1][y]==1) {
@@ -93,6 +120,15 @@ function jumpCoin(x,y,el) {
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        coinsLeft--;
+                        moves++;
+                        var coin = "Coins Left: "+coinsLeft;
+                        var move = "Moves :"+moves;
+                        document.getElementById("coins_left").innerHTML= coin;
+                        document.getElementById("moves").innerHTML= move;
+                        status_message="Valid move! Coin removed.";
+                        $("status_message").css("color","green");
+                        document.getElementById("status_message").innerHTML=status_message;
                         return;
             }
             if (x == parseInt(selected_coin[0]-2) && y==parseInt(selected_coin[2]) && coinStatus[x][y] == 0 && coinStatus[x+1][y]==1) {
@@ -103,10 +139,30 @@ function jumpCoin(x,y,el) {
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
+                        coinsLeft--;
+                        moves++;
+                        var coin = "Coins Left: "+coinsLeft;
+                        var move = "Moves :"+moves;
+                        document.getElementById("coins_left").innerHTML= coin;
+                        document.getElementById("moves").innerHTML= move;
+                        status_message="Valid move! Coin removed.";
+                        $("status_message").css("color","green");
+                        document.getElementById("status_message").innerHTML=status_message;
                         return;
             }
             else{
                         selected_coin=0;
+                        if (coinStatus[x][y]==0) {
+                                    status_message="Invalid move! Try again!";
+                                    moves++;
+                                    document.getElementById("moves").innerHTML = "Moves: "+moves;
+                                    $("status_message").css("color","red");
+                                    document.getElementById("status_message").innerHTML=status_message;
+                        }
+                        else{
+                                    status_message="Selecting a coin.."
+                                    $("status_message").css("color","green");
+                        }
                         coinClicked(x,y,el);
                         return;
             }
@@ -134,7 +190,12 @@ function deselectBox(x,y) {
 }
 
 function resetGame(){
-            
+            coinsLeft=32;
+            moves=0;
+            status_message="";
+            document.getElementById("coins_left").innerHTML= "Coins Left: "+coinsLeft;
+            document.getElementById("moves").innerHTML= "Moves: "+moves;
+            document.getElementById("status_message").innerHTML=status_message;
             coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -145,7 +206,12 @@ function resetGame(){
                            new Array(-1,-1,1,1,1,-1,-1)
                           );
             loadCoins();
-            
+}
+$(document).ready(function(e){
+            if (coinsLeft==0) {
+                        status_message="Congratulation! You have won the game";
+                        document.getElementById("status_message").innerHTML=status_message;
             }
+});
 
 
