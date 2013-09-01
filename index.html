@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="Assets/css/bootstrap.min.css"> 
         <link rel="stylesheet" type="text/css" href="Assets/css/bootstrap-responsive.css"> 
         <link rel="stylesheet" type="text/css" href="Assets/css/style.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="Assets/js/jquery.js"></script>
         <script src="Assets/js/brainvita-game.js"></script>
         
     </head>
@@ -15,23 +15,21 @@
             <ul class="navbar">
                 <br><br><br><br>
             <h2>Rules:</h2>
-        
-            
-        
-                <li class="active">
+            <br>
+                <li>
                     Select a coin to jump it over another coin.
                 </li>
                 <br>
-                <li class="pagination-large">
+                <li>
                     You can jump over only 1 coin either horizontally or vertically.
                 </li>
                 <br>
                 <li>
-                    You cannot jump a coind diagonally.
+                    You cannot jump over a coin diagonally.
                 </li>
                 <br>
                 <li>
-                    The coin which is jumped over by another coin will be removed
+                    The coin which is jumped over by another coin will be removed.
                 </li>
                 <br>
                 <li>
@@ -41,12 +39,38 @@
         </div>
         <div id="reset">
             <button id="reset_button" class="btn btn-large btn-success" onclick="return resetGame()">Reset</button>
+            <br><br>
+        </div>
+        <div id="stats">
+            <ul class="navbar">
+                <br><br><br><br>
+                <li id="coins_left">
+                    
+                </li>
+                <li id="moves">
+                    
+                </li>
+            </ul>
         </div>
               
         <div id="gameBoard">
             
         </div>
-         
+    
+        <div id="status_message">
+            
+        </div>
+        <div class="span11" style="height:55px;margin-left:0px;border-top:1px solid green;margin-top:350px;width:100%; ">
+        	<div class="span9" style="height:30px;margin-top:10px;margin-left:120px;">
+                	<span style="text-decoration:none;font-size:16px;letter-spacing:1px;" >Copyrights(c) 2013 Tarang Patel &nbsp;&nbsp;|</span>
+                        <span style="text-decoration:none;font-size:16px;letter-spacing:1px;" >&nbsp;&nbsp;&nbsp;Find me on: &nbsp;&nbsp;
+                        <a href="https://www.facebook.com/tarang.patel.184"><img src="Assets/images/facebook.png"/></a>
+                        <a href="https://plus.google.com/u/0/104449741682595336388/about"><img src="Assets/images/google+.png" style="height:30px;width: 30px"/></a>
+                        &nbsp;<a href="https://twitter.com/__TarangPatel"><img src="Assets/images/twitter.png" style="height: 30px;width: 30px"/></a>
+                        </span>
+                </div>
+        </div> 
+        
     </body>
     
 </html>
