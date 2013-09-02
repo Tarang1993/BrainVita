@@ -9,6 +9,6 @@ http://tarang1993.github.io/BrainVita/
 
 For any queries or to report bugs in the game, contact me.
 
-AUTHOR: 
-Tarang Patel <tarangrockr@gmail.com>
+ 
+- Tarang Patel <tarangrockr@gmail.com>
 
