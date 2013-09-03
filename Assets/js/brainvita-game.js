@@ -5,6 +5,8 @@ var status_message="";
 var sound = new buzz.sound("Assets/sounds/coin.wav");
 var error = new buzz.sound("Assets/sounds/error.wav");
 var select = new buzz.sound("Assets/sounds/select.wav");
+var reset = new buzz.sound("Assets/sounds/reset.wav");
+
 sound.setVolume(100);
 var coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -203,6 +205,7 @@ function resetGame(){
             coinsLeft=32;
             moves=0;
             status_message="";
+            reset.play();
             document.getElementById("coins_left").innerHTML= "Coins Left: "+coinsLeft;
             document.getElementById("moves").innerHTML= "Moves: "+moves;
             document.getElementById("status_message").innerHTML=status_message;
