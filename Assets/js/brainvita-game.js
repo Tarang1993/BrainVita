@@ -3,6 +3,8 @@ var moves=0;
 var selected_coin=0;
 var status_message="";
 var sound = new buzz.sound("Assets/sounds/coin.wav");
+var error = new buzz.sound("Assets/sounds/error.wav");
+var select = new buzz.sound("Assets/sounds/select.wav");
 sound.setVolume(100);
 var coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -59,6 +61,7 @@ function coinClicked(x,y,el){
                         $('#'+id).css("background-color","green");
                         if (status_message!="Invalid move! Try again!") {
                                     status_message="Selecting a coin.";
+                                    select.play();
                                     $("#status_message").css("color","green");
                                     document.getElementById("status_message").innerHTML=status_message;
                         }
@@ -160,6 +163,7 @@ function jumpCoin(x,y,el) {
                         selected_coin=0;
                         if (coinStatus[x][y]==0) {
                                     status_message="Invalid move! Try again!";
+                                    error.play();
                                     moves++;
                                     document.getElementById("moves").innerHTML = "Moves: "+moves;
                                     $("status_message").css("color","red");
