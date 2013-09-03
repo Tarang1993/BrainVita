@@ -2,6 +2,8 @@ var coinsLeft=32;
 var moves=0;
 var selected_coin=0;
 var status_message="";
+var sound = new buzz.sound("Assets/sounds/coin.wav");
+sound.setVolume(100);
 var coinStatus = new Array(
                            new Array(-1,-1,1,1,1,-1,-1),
                            new Array(-1,-1,1,1,1,-1,-1),
@@ -79,6 +81,7 @@ function jumpCoin(x,y,el) {
                         coinStatus[x][y-2]=0;
                         coinStatus[x][y-1]=0;
                         var new_id = 'box'+x+y;
+                        sound.play();
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
@@ -98,6 +101,7 @@ function jumpCoin(x,y,el) {
                         coinStatus[x][y+2]=0;
                         coinStatus[x][y+1]=0;
                         var new_id = 'box'+x+y;
+                        sound.play();
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
@@ -117,6 +121,7 @@ function jumpCoin(x,y,el) {
                         coinStatus[x-2][y]=0;
                         coinStatus[x-1][y]=0;
                         var new_id = 'box'+x+y;
+                        sound.play();
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
@@ -136,6 +141,7 @@ function jumpCoin(x,y,el) {
                         coinStatus[x+2][y]=0;
                         coinStatus[x+1][y]=0;
                         var new_id = 'box'+x+y;
+                        sound.play();
                         loadCoins();
                         $('#'+new_id).css("background-color","rgb(232,232,170)");
                         selected_coin=0;
